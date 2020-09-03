@@ -50,7 +50,36 @@
   (with-eval-after-load 'exec-path-from-shell
     (exec-path-from-shell-copy-env "PYTHONPATH"))
   ;; Live Coding in Python
-  (use-package live-py-mode))
+  (use-package live-py-mode)
+
+  ;; Autopep8
+  (use-package py-autopep8
+    :init (add-hook 'python-mode-hook #'py-autopep8-enable-on-save))
+
+  ;; Anaconda mode
+  (use-package anaconda-mode
+    :diminish anaconda-mode
+    :init (add-hook 'python-mode-hook #'anaconda-mode)
+    :config
+    (with-eval-after-load 'company
+      (use-package company-anaconda
+        :defines company-backends
+        :init (cl-pushnew (company-backend-with-yas 'company-anaconda) company-backends))))
+
+  (use-package jedi
+    :init
+    (use-package flycheck
+      :init (add-hook 'after-init-hook #'global-flycheck-mode))
+    (add-hook 'python-mode-hook 'jedi:setup)
+    (setq jedi:complete-on-dot t))
+
+  (use-package lsp-jedi
+  :ensure t
+  :config
+  (with-eval-after-load "lsp-mode"
+    (add-to-list 'lsp-disabled-clients 'pyls)
+    (add-to-list 'lsp-enabled-clients 'jedi)))
+ )
 
 (provide 'init-python)
 

@@ -75,6 +75,7 @@
            lsp-modeline-diagnostics-enable nil
 
            lsp-enable-file-watchers nil
+           lsp-enable-file-watchers nil
            lsp-enable-folding nil
            lsp-enable-semantic-highlighting nil
            lsp-enable-symbol-highlighting nil
@@ -399,10 +400,18 @@
            (setq lsp-treemacs-theme "centaur-colors")))))
 
    ;; Python: pyright
-   (use-package lsp-pyright
-     :hook (python-mode . (lambda () (require 'lsp-pyright)))
-     :init (when (executable-find "python3")
-             (setq lsp-pyright-python-executable-cmd "python3")))
+   ;; (use-package lsp-pyright
+   ;;  :hook (python-mode . (lambda () (require 'lsp-pyright)))
+   ;;  :init (when (executable-find "python3")
+   ;;          (setq lsp-pyright-python-executable-cmd "python3")))
+   
+   ;; Python: jedi-lsp
+   (use-package lsp-jedi
+      :ensure t
+      :config
+      (with-eval-after-load "lsp-mode"
+        (add-to-list 'lsp-disabled-clients 'pyls)
+        (add-to-list 'lsp-enabled-clients 'jedi)))
 
    ;; C/C++/Objective-C support
    (use-package ccls

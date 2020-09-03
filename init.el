@@ -116,6 +116,7 @@ decrease this. If you experience stuttering, increase this.")
 ;; Packages
 ;; Without this comment Emacs25 adds (package-initialize) here
 (require 'init-package)
+(require 'init-custom)
 
 ;; Preferences
 (require 'init-basic)
@@ -141,7 +142,7 @@ decrease this. If you experience stuttering, increase this.")
 (require 'init-shell)
 
 (require 'init-markdown)
-(require 'init-org)
+;;(require 'init-org)
 (require 'init-reader)
 
 (require 'init-docker)
@@ -163,6 +164,5 @@ decrease this. If you experience stuttering, increase this.")
 (require 'init-dart)
 (require 'init-elixir)
 (require 'init-web)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; init.el ends here
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; init.el ends here
