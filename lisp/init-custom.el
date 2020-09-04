@@ -117,7 +117,7 @@
                     centaur-package-archives-alist)))
 
 (defcustom centaur-theme-alist
-  '((default  . doom-one)
+  '((default  . doom-gruvbox)
     (classic  . doom-monokai-classic)
     (colorful . doom-snazzy)
     (dark     . doom-dark+)
