@@ -33,6 +33,7 @@
 (require 'init-const)
 (require 'init-custom)
 
+
 (use-package org
   :ensure nil
   :custom-face (org-ellipsis ((t (:foreground nil))))
@@ -258,19 +259,19 @@ prepended to the element after the #+HEADER: tag."
     :bind (:map org-agenda-mode-map
            ("P" . org-pomodoro))))
 
-;; org-roam
 (when (and emacs/>=26p (executable-find "cc"))
   (use-package org-roam
     :diminish
     :custom (org-roam-directory centaur-org-directory)
-    :hook (after-init . org-roam-mode)
+    ;; :hook (after-init . org-roam-mode))
     :bind (:map org-roam-mode-map
            (("C-c n l" . org-roam)
             ("C-c n f" . org-roam-find-file)
             ("C-c n g" . org-roam-graph))
            :map org-mode-map
            (("C-c n i" . org-roam-insert))
-           (("C-c n I" . org-roam-insert-immediate))))
+           (("C-c n I" . org-roam-insert-immediate)))
+    )
 
   (use-package org-roam-server
     :functions xwidget-buffer xwidget-webkit-current-session
@@ -286,7 +287,8 @@ prepended to the element after the #+HEADER: tag."
                   (when (buffer-live-p buf)
                     (and (eq buf (current-buffer)) (quit-window))
                     (pop-to-buffer buf))))
-            (browse-url url)))))))
+            (browse-url url))))))
+  )
 
 (provide 'init-org)
 
