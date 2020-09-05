@@ -40,10 +40,9 @@
   :init
   ;; Disable readline based native completion
   (setq python-shell-completion-native-enable nil)
-
   ;; set indent
-  (setq tab-width 2)
-  (setq python-indent 2)
+  ;; (setq tab-width 2)
+  ;; (setq python-indent 2)
   :config
   ;; Default to Python 3. Prefer the versioned Python binaries since some
   ;; systems stupidly make the unversioned one point at Python 2.
